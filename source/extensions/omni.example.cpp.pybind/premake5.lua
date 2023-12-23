@@ -12,7 +12,13 @@ repo_build.prebuild_link {
 project_ext_plugin(ext, "omni.example.cpp.pybind.plugin")
     add_files("include", "include/omni/example/cpp/pybind")
     add_files("source", "plugins/omni.example.cpp.pybind")
-    includedirs { "include", "plugins/omni.example.cpp.pybind" }
+    includedirs { "include", "plugins/omni.example.cpp.pybind", "/opt/ros/noetic/include" }
+    libdirs { "/opt/ros/noetic/lib" }
+    links {
+        "roscpp",
+        "rosconsole",
+        "rosconsole_bridge",
+    }
 
 -- Build Python bindings that will be loaded by the extension.
 project_ext_bindings {
@@ -22,10 +28,16 @@ project_ext_bindings {
     src = "bindings/python/omni.example.cpp.pybind",
     target_subdir = "omni/example/cpp/pybind"
 }
-    includedirs { "include" }
+    includedirs { "include", "/opt/ros/noetic/include" }
     repo_build.prebuild_link {
         { "python/impl", ext.target_dir.."/omni/example/cpp/pybind/impl" },
         { "python/tests", ext.target_dir.."/omni/example/cpp/pybind/tests" },
+    }
+    libdirs { "/opt/ros/noetic/lib" }
+    links {
+        "roscpp",
+        "rosconsole",
+        "rosconsole_bridge",
     }
 
 -- Build the C++ plugin that will be loaded by the tests.
