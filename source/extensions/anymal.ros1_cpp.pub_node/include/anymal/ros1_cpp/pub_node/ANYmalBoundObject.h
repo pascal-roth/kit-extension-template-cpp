@@ -10,24 +10,18 @@
 
 #include <carb/IObject.h>
 
-// Include ros headers
-#include <ros/ros.h>
-// Include ros twist message
-#include <geometry_msgs/Twist.h>
+namespace anymal
+{
+namespace ros1_cpp
+{
+namespace pub_node
+{
 
-namespace omni
-{
-namespace example
-{
-namespace cpp
-{
-namespace pybind
-{
 
 /**
  * Pure virtual bound object interface.
  */
-class ANYmalPublisher : public carb::IObject
+class ANYmalBoundObject : public carb::IObject
 {
 public:
     /**
@@ -36,16 +30,17 @@ public:
      * @return Id of this object.
      */
     virtual const char* getId() const = 0;
-
-    ANYmalPublisher(const std::string& topic_name);
-    void publishTwist(double linear_x, double angular_z);
-
-private:
-    ros::NodeHandle nh_;
-    ros::Publisher twist_pub_;
 };
 
+/**
+ * Implement the equality operator so these can be used in std containers.
+ */
+inline bool operator==(const carb::ObjectPtr<ANYmalBoundObject>& left,
+                       const carb::ObjectPtr<ANYmalBoundObject>& right) noexcept
+{
+    return (left.get() == right.get());
 }
+
 }
 }
 }

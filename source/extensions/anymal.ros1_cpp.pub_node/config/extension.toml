@@ -1,0 +1,32 @@
+[package]
+version = "0.0.1"
+
+# These fields are used primarily for display in the extension browser UI.
+title = "ANYmal ROS Publisher"
+description = "Publish ANYmal information to ROS"
+category = "Robotics"
+keywords = ["robotics", "C++", "cpp", "ros", "anymal", "pybind"]
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+authors = ["Pascal Roth <rothpa@ethz.ch>"]
+repository = ""
+
+[[python.module]]
+name = "anymal.ros1_cpp.pub_node"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+
+cpp_api = [
+     "include/anymal/ros1_cpp/pub_node/ANYmalBoundInterface.h",
+     "include/anymal/ros1_cpp/pub_node/ANYmalBoundObject.h",
+     "include/anymal/ros1_cpp/pub_node/ANYmalPublisher.h"
+]

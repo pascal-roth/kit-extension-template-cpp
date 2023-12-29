@@ -37,5 +37,4 @@ cpp_api = [
      "include/omni/example/cpp/pybind/IExampleBoundInterface.h",
      "include/omni/example/cpp/pybind/IExampleBoundObject.h",
      "include/omni/example/cpp/pybind/ExampleBoundObject.h",
-     "include/omni/example/cpp/pybind/ANYmalPublisher.h"
 ]

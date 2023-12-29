@@ -15,4 +15,12 @@
   <dependency name="pybind11" linkPath="../_build/target-deps/pybind11"/>
   <dependency name="python" linkPath="../_build/target-deps/python"/>
 
+  <dependency name="system_ros" linkPath="../_build/target-deps/system_ros" tags="${config}">
+    <source path="/opt/ros/noetic" />
+  </dependency>
+
+  <dependency name="system_boost" linkPath="../_build/target-deps/system_boost" tags="${config}">
+    <source path="/usr/include/boost" />
+  </dependency>
+
 </project>
