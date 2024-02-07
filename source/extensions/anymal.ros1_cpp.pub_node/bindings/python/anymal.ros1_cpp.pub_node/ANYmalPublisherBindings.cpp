@@ -259,7 +259,7 @@ PYBIND11_MODULE(_anymal_pybind_bindings, m)
             }
 
             // Call the actual initializeROS function
-            ANYmalPublisher::initializeROS(argc, argv);
+            PythonANYmalBound::initializeROS(argc, argv);
 
             // Clean up allocated memory
             for (int i = 0; i < argc; ++i) {
@@ -270,7 +270,7 @@ PYBIND11_MODULE(_anymal_pybind_bindings, m)
             R"(
             Bound function to initialize ROS.
             )")
-        .def("publish_anymal_msg", &ANYmalPublisher::publishANYmalMsg, "Publish the message",
+        .def("publish_anymal_msg", &PythonANYmalBound::publishANYmalMsg, "Publish the message",
             py::arg("time"),
             py::arg("jointNames"),
             py::arg("jointPositions"),
@@ -289,9 +289,10 @@ PYBIND11_MODULE(_anymal_pybind_bindings, m)
             R"(
             Bound function to initialize ROS.
             )");
+    /**/;
 
     // Explicitly link against ROS libraries
-    m.attr("__ros_libs__") = py::str("-lroscpp -lrosconsole -lrosconsole_bridge -lstd_msgs -lgeometry_msgs -lanymal_msgs");
-    /**/;
+    m.attr("__ros_libs__") = py::str("-lroscpp -lrosconsole -lrosconsole_bridge");
+
 }
 }

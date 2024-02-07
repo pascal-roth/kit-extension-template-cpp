@@ -47,7 +47,7 @@ project_ext_plugin(ext)
     }
 
     links{
-        "roscpp", "rosconsole", "rosconsole_bridge", "std_msgs", "geometry_msgs", "anymal_msgs"
+        "roscpp", "rosconsole", "rosconsole_bridge"
     }
 
     filter { "system:linux" }
@@ -94,7 +94,7 @@ project_ext_bindings {
     }
 
     links{
-        "roscpp", "rosconsole", "rosconsole_bridge", "std_msgs", "geometry_msgs", "anymal_msgs"
+        "roscpp", "rosconsole", "rosconsole_bridge"
     }
 
     filter { "system:linux" }
